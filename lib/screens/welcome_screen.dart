@@ -1,5 +1,6 @@
+import 'package:chitchat/constants.dart';
+import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcomeScreen';
    const WelcomeScreen({super.key});
@@ -12,7 +13,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: kBackGroundColor,
       body: Stack(
         children: <Widget>[
           Center(
@@ -59,7 +60,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
                     onPressed: () {
-                      //Go to login screen.
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                     },
                     minWidth: 200.0,
                     height: 42.0,
