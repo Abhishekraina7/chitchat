@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+  static const String id = 'welcomeScreen';
+   const WelcomeScreen({super.key});
   
   @override
   WelcomeScreenState createState() => WelcomeScreenState();
@@ -16,8 +17,8 @@ class WelcomeScreenState extends State<WelcomeScreen> {
         children: <Widget>[
           Center(
             child: Container(
-              margin : const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
-              child: Image.asset('images/Back2.png'),
+              margin : const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 50.0),
+              child: Image.asset('images/Back5.png'),
             ),
           ),
           Padding(
@@ -31,18 +32,19 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      margin: const EdgeInsets.fromLTRB(40.0, 0.0, 0.0, 0.0),
+                      margin: const EdgeInsets.fromLTRB(40.0, 0.0, 50.0, 0.0),
                       height: 50,
                       width: 50,
-                      child: Image.asset('images/logo.png',),
+                      // child: Image.asset('images/logo.png',),
                     ),
-                    const Text(
-                      'ChitChat',
-                      style: TextStyle(
-                        fontSize: 45.0,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                    // const Text(
+                    //   'Welcome',
+                    //   style: TextStyle(
+                    //     fontSize: 45.0,
+                    //     fontWeight: FontWeight.w900,
+                    //     color: Colors.lightGreen,
+                    //   ),
+                    // ),
                   ],
                 )
               ),
@@ -53,7 +55,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
                   elevation: 5.0,
-                  color: Colors.lightBlue,
+                  color: Colors.greenAccent,
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
                     onPressed: () {
@@ -70,7 +72,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
-                  color: Colors.blueAccent,
+                  color: Colors.blueGrey,
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
@@ -93,7 +95,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
             children: [
               Container(
                 margin: const EdgeInsets.fromLTRB(125.0, 750.0, 0.0, 0.0),
-                child: const Text('Welcome to Chit Chat!', style: TextStyle(fontWeight: FontWeight.w400),),
+                child: const Text('Welcome to ChitChat!', style: TextStyle(fontWeight: FontWeight.w500),),
               ),
             ],
           ),
