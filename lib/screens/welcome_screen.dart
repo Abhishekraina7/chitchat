@@ -1,6 +1,7 @@
 import 'package:chitchat/constants.dart';
 import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:chitchat/screens/registration_screen.dart';
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcomeScreen';
    const WelcomeScreen({super.key});
@@ -18,8 +19,8 @@ class WelcomeScreenState extends State<WelcomeScreen> {
         children: <Widget>[
           Center(
             child: Container(
-              margin : const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 50.0),
-              child: Image.asset('images/Back5.png'),
+              margin : const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 250.0),
+              child: Image.asset('images/welcomescreenback.png'),
             ),
           ),
           Padding(
@@ -78,8 +79,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                   elevation: 5.0,
                   child: MaterialButton(
                     onPressed: () {
-                      //Go to registration screen.
-                    },
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const RegistrationScreen()));                    },
                     minWidth: 200.0,
                     height: 42.0,
                     child: const Text(
