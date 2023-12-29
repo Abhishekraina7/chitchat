@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chitchat/constants.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'loginScreen';
@@ -11,7 +12,16 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBackGroundColor,
+      appBar: AppBar(
+        backgroundColor: Colors.greenAccent ,
+        leading: IconButton(
+          icon:const Icon(Icons.arrow_back, color: Colors.black,),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -21,7 +31,7 @@ class LoginScreenState extends State<LoginScreen> {
             Center(
               child: Container(
                 height: 200.0,
-                child: Image.asset('images/logo.png'),
+                child: Image.asset('images/loginscreenback.png'),
               ),
             ),
             const SizedBox(
@@ -40,12 +50,12 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+                      BorderSide(color: Colors.greenAccent, width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                      BorderSide(color: Colors.greenAccent, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -66,12 +76,12 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 1.0),
+                      BorderSide(color: Colors.greenAccent, width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+                      BorderSide(color: Colors.greenAccent, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -82,7 +92,7 @@ class LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.lightBlueAccent,
+                color: Colors.greenAccent,
                 borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                 elevation: 5.0,
                 child: MaterialButton(
