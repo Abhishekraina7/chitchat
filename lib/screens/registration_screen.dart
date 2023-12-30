@@ -1,3 +1,4 @@
+import 'package:chitchat/constants.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -11,16 +12,26 @@ class RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF95FF80) ,
+    leading: IconButton(
+    icon:const Icon(Icons.arrow_back, color: Colors.black,),
+    onPressed: (){
+    Navigator.pop(context);
+    },
+    ),),
+      backgroundColor: kBackGroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(
+
+             SizedBox(
               height: 200.0,
-              child: Image.asset('images/logo.png'),
+              child: Image.asset('images/Registrationback.png'),
             ),
             const SizedBox(
               height: 48.0,
@@ -37,11 +48,11 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                  borderSide: BorderSide(color: Color(0xFF95FF80), width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+                  borderSide: BorderSide(color: Color(0xFF95FF80), width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -61,11 +72,11 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                  borderSide: BorderSide(color: Color(0xFF95FF80), width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+                  borderSide: BorderSide(color: Color(0xFF95FF80), width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -76,7 +87,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.blueAccent,
+                color: const Color(0xFF95FF80),
                 borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                 elevation: 5.0,
                 child: MaterialButton(
