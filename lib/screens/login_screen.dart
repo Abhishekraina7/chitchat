@@ -14,7 +14,7 @@ class LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: kBackGroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent ,
+        backgroundColor: const Color(0xFF95FF80) ,
         leading: IconButton(
           icon:const Icon(Icons.arrow_back, color: Colors.black,),
           onPressed: (){
@@ -50,12 +50,12 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.greenAccent, width: 1.0),
+                      BorderSide(color: Color(0xFF95FF80), width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.greenAccent, width: 2.0),
+                      BorderSide(color: Color(0xFF95FF80), width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -76,12 +76,12 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.greenAccent, width: 1.0),
+                      BorderSide(color: Color(0xFF95FF80), width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide:
-                      BorderSide(color: Colors.greenAccent, width: 2.0),
+                      BorderSide(color: Color(0xFF95FF80), width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -92,7 +92,7 @@ class LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.greenAccent,
+                color: const Color(0xFF95FF80),
                 borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                 elevation: 5.0,
                 child: MaterialButton(
