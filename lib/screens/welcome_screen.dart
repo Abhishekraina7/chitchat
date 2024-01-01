@@ -3,7 +3,9 @@ import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chitchat/screens/registration_screen.dart';
 class WelcomeScreen extends StatefulWidget {
+
   static const String id = 'welcomeScreen';
+  
    const WelcomeScreen({super.key});
   
   @override
@@ -18,9 +20,13 @@ class WelcomeScreenState extends State<WelcomeScreen> {
       body: Stack(
         children: <Widget>[
           Center(
-            child: Container(
-              margin : const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 250.0),
-              child: Image.asset('images/welcomescreenback.png'),
+            child: Hero(
+              tag: 'flash',
+              child: Container(
+                margin : const EdgeInsets.fromLTRB(0.0, 0.0, 200.0, 250.0),
+                height: 100,
+                child:  Image.asset('images/logo.png'),
+              ),
             ),
           ),
           Padding(
@@ -57,7 +63,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
                   elevation: 5.0,
-                  color: Colors.greenAccent,
+                  color: const Color(0xFF95FF80),
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
                     onPressed: () {
@@ -74,7 +80,7 @@ class WelcomeScreenState extends State<WelcomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
-                  color: Colors.blueGrey,
+                  color: const Color(0xFF1E284C),
                   borderRadius: BorderRadius.circular(30.0),
                   elevation: 5.0,
                   child: MaterialButton(
