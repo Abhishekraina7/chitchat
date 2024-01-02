@@ -12,7 +12,19 @@ class WelcomeScreen extends StatefulWidget {
   WelcomeScreenState createState() => WelcomeScreenState();
 }
 
-class WelcomeScreenState extends State<WelcomeScreen> {
+class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin { //By using this mixin our state act as the ticker for animation controller
+
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        vsync: this, // read the documentation to fully understand about this
+    duration: const Duration(seconds: 2)
+    );
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +35,9 @@ class WelcomeScreenState extends State<WelcomeScreen> {
             child: Hero(
               tag: 'flash',
               child: Container(
-                margin : const EdgeInsets.fromLTRB(0.0, 0.0, 200.0, 250.0),
-                height: 100,
-                child:  Image.asset('images/logo.png'),
+                margin : const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 250.0),
+                height: 200,
+                child:  Image.asset('images/welcomescreenback.png'),
               ),
             ),
           ),
