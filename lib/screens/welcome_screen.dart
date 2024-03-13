@@ -1,9 +1,10 @@
+import 'dart:ffi';
+
 import 'package:chitchat/constants.dart';
 import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chitchat/screens/registration_screen.dart';
 class WelcomeScreen extends StatefulWidget {
-
   static const String id = 'welcomeScreen';
   
    const WelcomeScreen({super.key});
@@ -12,7 +13,7 @@ class WelcomeScreen extends StatefulWidget {
   WelcomeScreenState createState() => WelcomeScreenState();
 }
 
-class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin { //By using this mixin our state act as the ticker for animation controller
+class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin { //By using this mixin our state object act as the ticker for animation controller
 
   late AnimationController controller;
 
@@ -24,11 +25,17 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
     duration: const Duration(seconds: 2)
     );
 
+    controller.forward();
+    controller.addListener(() {
+      setState(() {      // This is used because for every changed number value of opacity in background color changes
+
+      });print(controller.value);});
+
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackGroundColor,
+      backgroundColor: Colors.pinkAccent.withOpacity(controller.value), //We used the changing value from animation controller via listeiner
       body: Stack(
         children: <Widget>[
           Center(
@@ -52,19 +59,11 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                 child: Row(
                   children: <Widget>[
                     Container(
-                      margin: const EdgeInsets.fromLTRB(40.0, 0.0, 50.0, 0.0),
+                      margin: const EdgeInsets.fromLTRB(100.0, 0.0, 50.0, 0.0),
                       height: 50,
                       width: 50,
                       // child: Image.asset('images/logo.png',),
                     ),
-                    // const Text(
-                    //   'Welcome',
-                    //   style: TextStyle(
-                    //     fontSize: 45.0,
-                    //     fontWeight: FontWeight.w900,
-                    //     color: Colors.lightGreen,
-                    //   ),
-                    // ),
                   ],
                 )
               ),
