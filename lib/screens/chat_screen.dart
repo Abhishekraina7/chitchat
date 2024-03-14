@@ -3,6 +3,7 @@ import 'package:chitchat/constants.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'welcomeScreen';
+
   const ChatScreen({super.key});
 
   @override
@@ -17,12 +18,12 @@ class ChatScreenState extends State<ChatScreen> {
         leading: null,
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
               onPressed: () {
                 //Implement logout functionality
               }),
         ],
-        title: Text('⚡️Chat'),
+        title: const Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: SafeArea(
