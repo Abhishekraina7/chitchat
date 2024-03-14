@@ -1,8 +1,10 @@
 import 'package:chitchat/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:chitchat/components/buttons.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration';
+
  const  RegistrationScreen({super.key});
   @override
   RegistrationScreenState createState() => RegistrationScreenState();
@@ -84,28 +86,11 @@ class RegistrationScreenState extends State<RegistrationScreen> {
             const SizedBox(
               height: 24.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: const Color(0xFF95FF80),
-                borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Implement registration functionality.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+            Buttons(color: const Color(0xFF95FF80), name: 'Register', onPressed: (){}),
           ],
         ),
       ),
     );
   }
 }
+
