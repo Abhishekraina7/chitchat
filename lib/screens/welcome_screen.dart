@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:chitchat/constants.dart';
 import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chitchat/screens/registration_screen.dart';
@@ -16,6 +14,8 @@ class WelcomeScreen extends StatefulWidget {
 class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin { //By using this mixin our state object act as the ticker for animation controller
 
   late AnimationController controller;
+  late Animation animation;
+
 
   @override
   void initState() {
@@ -25,12 +25,21 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
     duration: const Duration(seconds: 2)
     );
 
-    controller.forward();
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeOutBack);
+
+      controller.forward(); // This controls the scale of animation, wheather animations goes from higher value to smaller or reverse.
+
+    animation.addStatusListener((status) {print(status);}); // We can use this to loop our animation from forward to reverse loop by checking status and putting coditions on it
     controller.addListener(() {
-      setState(() {      // This is used because for every changed number value of opacity in background color changes
 
-      });print(controller.value);});
+      setState(() {});print(controller.value);}); // This is used because for every changed number value of opacity in background color changes
 
+    @override
+    void deactivate()   // this is used to free resources when the this screen's state is destroyed
+    {
+      controller.dispose();
+      super.dispose();
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -43,7 +52,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
               tag: 'flash',
               child: Container(
                 margin : const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 250.0),
-                height: 200,
+                height: animation.value * 200,
                 child:  Image.asset('images/welcomescreenback.png'),
               ),
             ),
@@ -78,6 +87,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
                     onPressed: () {
+
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                     },
                     minWidth: 200.0,
@@ -113,7 +123,8 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
             children: [
               Container(
                 margin: const EdgeInsets.fromLTRB(125.0, 750.0, 0.0, 0.0),
-                child: const Text('Welcome to ChitChat!', style: TextStyle(fontWeight: FontWeight.w500),),
+                height: animation.value * 20,
+                child: const Text('Welcome to ChitChat!', style: TextStyle(fontWeight: FontWeight.w400),),
               ),
             ],
           ),
