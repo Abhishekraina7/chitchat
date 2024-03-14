@@ -2,6 +2,7 @@
 import 'package:chitchat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chitchat/screens/registration_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcomeScreen';
   
@@ -32,7 +33,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
     animation.addStatusListener((status) {print(status);}); // We can use this to loop our animation from forward to reverse loop by checking status and putting coditions on it
     controller.addListener(() {
 
-      setState(() {});print(controller.value);}); // This is used because for every changed number value of opacity in background color changes
+      setState(() {});}); // This is used because for every changed number value of opacity in background color changes
 
     @override
     void deactivate()   // this is used to free resources when the this screen's state is destroyed
@@ -79,42 +80,9 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
               const SizedBox(
                 height: 48.0,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  elevation: 5.0,
-                  color: const Color(0xFF95FF80),
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: MaterialButton(
-                    onPressed: () {
+              Buttons(color: const Color(0xFF95FF80), name: 'Log in', onPressed: (){Navigator.pushNamed(context, LoginScreen.id);},),
+              Buttons(color: const Color(0xFF1E284C), name: 'Register', onPressed: (){Navigator.pushNamed(context, RegistrationScreen.id);},),
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
-                    },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: const Text(
-                      'Log In',
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  color: const Color(0xFF1E284C),
-                  borderRadius: BorderRadius.circular(30.0),
-                  elevation: 5.0,
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const RegistrationScreen()));                    },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: const Text(
-                      'Register',
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
@@ -123,13 +91,43 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
             children: [
               Container(
                 margin: const EdgeInsets.fromLTRB(125.0, 750.0, 0.0, 0.0),
-                height: animation.value * 20,
-                child: const Text('Welcome to ChitChat!', style: TextStyle(fontWeight: FontWeight.w400),),
+                child:  AnimatedTextKit(animatedTexts:
+                [
+                  WavyAnimatedText('Welcome to ChitChat!'),
+                ],
+                  isRepeatingAnimation: true,),
               ),
             ],
           ),
     ],
       ),
     );
+  }
+}
+
+class Buttons extends StatelessWidget {
+
+ Buttons({super.key, required this.color,required this.name,required this.onPressed});
+ final Color color;
+ final String name;
+ // final Function onPressed; THIS DIDN'T WORK
+ final VoidCallback onPressed;  //
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Material(
+        elevation: 5.0,
+        color:  color,
+        borderRadius: BorderRadius.circular(30.0),
+        child: MaterialButton(
+          onPressed:  onPressed,
+          minWidth: 200.0,
+          height: 42.0,
+          child:  Text(name),
+        ),
+      ),
+    );
+
   }
 }
