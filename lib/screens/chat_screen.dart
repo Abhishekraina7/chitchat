@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:chitchat/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chitchat/screens/registration_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'welcomeScreen';
@@ -11,7 +15,31 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> {
+  final _auth = FirebaseAuth.instance;
+  late FirebaseUser loggedInUser;
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser!;
+      if (user != null) {
+        loggedInUser = user as FirebaseUser;
+
+      }
+    }
+    catch(e)
+    {
+      print(e);
+    }
+  }
+
+
   @override
+  void initState() {
+
+    super.initState();
+    getCurrentUser();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -62,3 +90,8 @@ class ChatScreenState extends State<ChatScreen> {
     );
   }
 }
+
+class FirebaseUser {
+}
+
+
