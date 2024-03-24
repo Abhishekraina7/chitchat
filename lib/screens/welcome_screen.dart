@@ -1,8 +1,11 @@
 
 import 'package:chitchat/screens/login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:chitchat/screens/registration_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:chitchat/components/buttons.dart';
+
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcomeScreen';
   
@@ -19,6 +22,7 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
 
 
   @override
+
   void initState() {
     super.initState();
     controller = AnimationController(
@@ -33,19 +37,13 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
     animation.addStatusListener((status) {print(status);}); // We can use this to loop our animation from forward to reverse loop by checking status and putting coditions on it
     controller.addListener(() {
 
-      setState(() {});}); // This is used because for every changed number value of opacity in background color changes
-
-    @override
-    void deactivate()   // this is used to free resources when the this screen's state is destroyed
-    {
-      controller.dispose();
-      super.dispose();
-    }
+      setState(() {});}
+    ); // This is used because for every changed number value of opacity in background color changes
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pinkAccent.withOpacity(controller.value), //We used the changing value from animation controller via listeiner
+      backgroundColor: Colors.black.withOpacity(controller.value), //We used the changing value from animation controller via listeiner
       body: Stack(
         children: <Widget>[
           Center(
@@ -102,32 +100,5 @@ class WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderS
     ],
       ),
     );
-  }
-}
-
-class Buttons extends StatelessWidget {
-
- Buttons({super.key, required this.color,required this.name,required this.onPressed});
- final Color color;
- final String name;
- // final Function onPressed; THIS DIDN'T WORK
- final VoidCallback onPressed;  //
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Material(
-        elevation: 5.0,
-        color:  color,
-        borderRadius: BorderRadius.circular(30.0),
-        child: MaterialButton(
-          onPressed:  onPressed,
-          minWidth: 200.0,
-          height: 42.0,
-          child:  Text(name),
-        ),
-      ),
-    );
-
   }
 }
