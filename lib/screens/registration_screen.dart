@@ -1,6 +1,9 @@
+
 import 'package:chitchat/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:chitchat/components/buttons.dart';
+import 'package:chitchat/screens/chat_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration';
@@ -11,6 +14,11 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class RegistrationScreenState extends State<RegistrationScreen> {
+  final _auth = FirebaseAuth.instance; // This is the firebase method used for authenticating the users
+  late String email;
+  late String password;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,15 +40,16 @@ class RegistrationScreenState extends State<RegistrationScreen> {
           children: <Widget>[
 
              SizedBox(
-              height: 200.0,
+              height: 170.0,
               child: Image.asset('images/Registrationback.png'),
             ),
             const SizedBox(
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
-                //Do something with the user input.
+                 email = value;
               },
               decoration: kMessageTextFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
@@ -48,15 +57,33 @@ class RegistrationScreenState extends State<RegistrationScreen> {
               height: 8.0,
             ),
             TextField(
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
               onChanged: (value) {
                 //Do something with the user input.
+                password = value;
               },
               decoration:kMessageTextFieldDecoration.copyWith(hintText: 'Enter your Password'),
             ),
             const SizedBox(
               height: 24.0,
             ),
-            Buttons(color: const Color(0xFF95FF80), name: 'Register', onPressed: (){}), // Refactored code
+            Buttons(color: const Color(0xFF95FF80), name: 'Register',
+                onPressed: ()async{
+              try{
+                  final newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                  if(newUser != null)
+                    {
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
+              }
+              catch(e)
+                  {
+                    print(e);
+                  }
+                }
+            // Refactored code
+            ),
           ],
         ),
       ),
